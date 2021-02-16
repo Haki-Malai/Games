@@ -1,0 +1,689 @@
+body{
+    display: flex;
+    justify-content: center;
+    background: #031321;
+    font-family: 'Orbitron', sans-serif;
+    overflow: hidden;
+}
+#GameFrame{
+    background: #031321;
+    max-width: 100%;
+    height: 650px;
+    width: 850px;
+    position: relative;
+}
+#winMessage{
+    text-align: center;
+    position: absolute;
+    color: white;
+    z-index: 5;
+    opacity: 0%;
+
+}
+
+#BlackLine{
+    opacity: 0%;
+    background-color: black;
+    position: fixed;
+    height: 80px;
+    width: 1940px;
+    top: 0px;
+    z-index: 3;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+}
+
+#maze{
+    opacity: 0%;
+    background-image: url("Pac-Man Images/Game.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 2654.4px;
+    height: 2839.2px;
+    z-index: 3;
+    position: absolute;
+}
+#pacman{
+    opacity: 0%;
+    background-image: url("Pac-Man Images/RightPac1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    z-index: 2;
+    position: absolute;
+}
+#Click{
+    z-index: 7;
+    color: whitesmoke;
+    position: relative;
+    top: 310px;
+    left: 380px;
+    font-size: 20px;
+    letter-spacing: 3px;
+    animation: IntroClick 0.5s infinite;
+}
+
+#MyName{
+    color: whitesmoke;
+    position: relative;
+    top: 300px;
+    left: 270px;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+#H{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#A{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#K{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#I{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#M{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#A2{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#L{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#A3{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#I2{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+}
+#MadeBy{
+    color: whitesmoke;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+#Pac{
+    background-image: url("Pac-Man Images/Pac.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    width: 500px;
+    position: relative;
+    top: -200px;
+    left: 110px;
+}
+
+#Dash{
+    background: url("Pac-Man Images/Dash.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 35px;
+    width: 60px;
+    position: relative;
+    top: -270px;
+    left: 402px;
+}
+
+#Man{
+    background: url("Pac-Man Images/Man.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    width: 500px;
+    position: relative;
+    top: -335px;
+    left: 480px;
+}
+
+#Start,#Options,#Exit{
+    z-index: 7;
+    background-color: black;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffd70080;
+    letter-spacing: 3px;
+    font-size: 40px;
+
+    display: block;
+    margin: 20px;
+    height: 50px;
+    width: 300px;
+    border: 4px double #8B008B;
+    border-radius: 50px;
+    position: relative;
+    left: 250px; 
+    top: 350px;
+}
+
+#STA{
+    animation: none;
+}
+
+#IO{
+    animation: none;
+}
+
+#X{
+    animation: none;
+}
+@keyframes PacAnimationRight{
+    0%{ background-image: url("Pac-Man Images/RightPac1.png");}
+    20%{ background-image: url("Pac-Man Images/RightPac2.png");}
+    40%{ background-image: url("Pac-Man Images/RightPac3.png");}
+    60%{ background-image: url("Pac-Man Images/RightPac4.png");}
+    80%{ background-image: url("Pac-Man Images/RightPac3.png");}
+    100%{ background-image: url("Pac-Man Images/RightPac2.png");}
+}
+@keyframes PacAnimationLeft{
+    0%{ background-image: url("Pac-Man Images/LeftPac1.png");}
+    20%{ background-image: url("Pac-Man Images/LeftPac2.png");}
+    40%{ background-image: url("Pac-Man Images/LeftPac3.png");}
+    60%{ background-image: url("Pac-Man Images/LeftPac4.png");}
+    80%{ background-image: url("Pac-Man Images/LeftPac3.png");}
+    100%{ background-image: url("Pac-Man Images/LeftPac2.png");}
+}
+@keyframes PacAnimationDown{
+    0%{ background-image: url("Pac-Man Images/DownPac1.png");}
+    20%{ background-image: url("Pac-Man Images/DownPac2.png");}
+    40%{ background-image: url("Pac-Man Images/DownPac3.png");}
+    60%{ background-image: url("Pac-Man Images/DownPac4.png");}
+    80%{ background-image: url("Pac-Man Images/DownPac3.png");}
+    100%{ background-image: url("Pac-Man Images/DownPac2.png");}
+}
+@keyframes PacAnimationUp{
+    0%{ background-image: url("Pac-Man Images/UpPac1.png");}
+    20%{ background-image: url("Pac-Man Images/UpPac2.png");}
+    40%{ background-image: url("Pac-Man Images/UpPac3.png");}
+    60%{ background-image: url("Pac-Man Images/UpPac4.png");}
+    80%{ background-image: url("Pac-Man Images/UpPac3.png");}
+    100%{ background-image: url("Pac-Man Images/UpPac2.png");}
+}
+
+@keyframes PacDyingRight{
+    0%{ background-image: url("Pac-Man Images/DyingRight1.png");}
+    16%{ background-image: url("Pac-Man Images/DyingRight2.png");}
+    33%{ background-image: url("Pac-Man Images/DyingRight3.png");}
+    49%{ background-image: url("Pac-Man Images/DyingRight4.png");}
+    67%{ background-image: url("Pac-Man Images/DyingRight5.png");}
+    84%{ background-image: url("Pac-Man Images/DyingRight6.png");}
+    100%{ background-image: none}
+}
+@keyframes PacDyingLeft{
+    0%{ background-image: url("Pac-Man Images/DyingLeft1.png");}
+    16%{ background-image: url("Pac-Man Images/DyingLeft2.png");}
+    33%{ background-image: url("Pac-Man Images/DyingLeft3.png");}
+    49%{ background-image: url("Pac-Man Images/DyingLeft4.png");}
+    67%{ background-image: url("Pac-Man Images/DyingLeft5.png");}
+    84%{ background-image: url("Pac-Man Images/DyingLeft6.png");}
+    100%{ background-image: none}
+}
+@keyframes PacDyingDown{
+    0%{ background-image: url("Pac-Man Images/DyingDown1.png");}
+    16%{ background-image: url("Pac-Man Images/DyingDown2.png");}
+    33%{ background-image: url("Pac-Man Images/DyingDown3.png");}
+    49%{ background-image: url("Pac-Man Images/DyingDown4.png");}
+    67%{ background-image: url("Pac-Man Images/DyingDown5.png");}
+    84%{ background-image: url("Pac-Man Images/DyingDown6.png");}
+    100%{ background-image: none}
+}
+@keyframes PacDyingUp{
+    0%{ background-image: url("Pac-Man Images/DyingUp1.png");}
+    16%{ background-image: url("Pac-Man Images/DyingUp2.png");}
+    33%{ background-image: url("Pac-Man Images/DyingUp3.png");}
+    49%{ background-image: url("Pac-Man Images/DyingUp4.png");}
+    67%{ background-image: url("Pac-Man Images/DyingUp5.png");}
+    84%{ background-image: url("Pac-Man Images/DyingUp6.png");}
+    100%{ background-image: none}
+}
+@keyframes onoff {
+    19%{opacity:1;text-shadow: 0px 0px 5px#ffd70080;}
+    21%{opacity:0.3;text-shadow: 0px 0px 4px #ffd70080;}
+    23%{opacity:1;text-shadow: 0px 0px 7px #ffd70080,  0 0 6px #ffd70080,  0 0 6px #ffd70080;}
+    40%{opacity:0.9;text-shadow: 0px 0px 8px #ffd70080;}
+    53%{opacity:0.4;text-shadow: 0px 0px 4px #ffd70080;}
+    57%{opacity:1;text-shadow: 0px 0px 7px #ffd70080,  0 0 6px #ffd70080,  0 0 6px #ffd70080;}
+    58%{opacity:1;text-shadow: 0px 0px 7px #ffd70080,  0 0 26px #ffd70080,}
+    100%{opacity:1;text-shadow: 0px 0px 7px #ffd70080,  0 0 26px #ffd70080,}
+}
+
+@keyframes Welcome{
+    0%{
+        left: -400px; top: 350px; 
+        color:#333300; text-shadow: none; 
+        border-color: #8B008B80; box-shadow: none;
+    }
+    70%{
+        left: 280px; top: 350px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B80; box-shadow: none;
+    }
+    85%{
+        left: 230px; top: 350px; 
+        color:#ffd700; text-shadow: 0px 0px 10px #ffd700,  0 0 10px #ffd700,  0 0 100px #ffd700; font-size: 43px;
+        border-color: #8B008B; box-shadow: 0 0 30px #8B008B;
+    }
+    100%{
+        left: 250px; top: 350px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B;
+    }    
+}
+
+@keyframes WelcomeOptions{
+    0%{
+        left: 900px; top: 350px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B80; box-shadow: none;
+    }
+    70%{
+        left: 220px; top: 350px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B80; box-shadow: none;
+    }
+    85%{
+        left: 270px; top: 350px; 
+        color:#ffd700; text-shadow: 0px 0px 10px #ffd700,  0 0 10px #ffd700,  0 0 100px #ffd700; font-size: 43px;
+        border-color: #8B008B; box-shadow: 0 0 10px #8B008B80;
+    }
+    100%{
+        left: 250px; top: 350px; 
+        color:#333300; text-shadow: none;
+        border-color: 0 0 10px #8B008B80; box-shadow: 0 0 10px #8B008B;
+    }    
+}
+
+@keyframes WhenHover{
+    0%{
+    cursor: pointer;
+    font-size: 43px;
+    text-shadow: 0px 0px 7px #ffd700,  0 0 60px #ffd700,  0 0 160px #ffd700;
+    color:  #ffd700;
+    filter: brightness(85%);
+    background: #8B008B;
+    box-shadow: 0 0 300px #8B008B, 0 0 600px #8B008B, 0 0 160px #8B008B;
+    }
+    25%{
+        top: 354px; 
+        cursor: pointer;
+        font-size: 43px;
+        text-shadow: 0px 0px 7px #ffd700,  0 0 60px #ffd700,  0 0 160px #ffd700;
+        color:  #ffd700;
+        filter: brightness(85%);
+        background: #8B008B;
+        box-shadow: 0 0 300px #8B008B, 0 0 600px #8B008B, 0 0 160px #8B008B;
+    }
+    50%{
+        top: 358px;
+        cursor: pointer;
+        font-size: 43px;
+        text-shadow: 0px 0px 7px #ffd700,  0 0 60px #ffd700,  0 0 160px #ffd700;
+        color:  #ffd700;
+        filter: brightness(85%);
+        background: #8B008B;
+        box-shadow: 0 0 300px #8B008B, 0 0 600px #8B008B, 0 0 160px #8B008B;
+    }
+    75%{
+        top: 354px;
+        cursor: pointer;
+        font-size: 43px;
+        text-shadow: 0px 0px 7px #ffd700,  0 0 60px #ffd700,  0 0 160px #ffd700;
+        color:  #ffd700;
+        filter: brightness(85%);
+        background: #8B008B;
+        box-shadow: 0 0 300px #8B008B, 0 0 600px #8B008B, 0 0 160px #8B008B;
+    }
+    100%{
+        top: 350px;
+        cursor: pointer;
+        font-size: 43px;
+        text-shadow: 0px 0px 7px #ffd700,  0 0 60px #ffd700,  0 0 160px #ffd700;
+        color:  #ffd700;
+        filter: brightness(85%);
+        background: #8B008B;
+        box-shadow: 0 0 300px #8B008B, 0 0 600px #8B008B, 0 0 160px #8B008B;
+    }
+}
+
+@keyframes Lighting{
+    0%{text-shadow: 0px 0px 7px #ffd70080,  0 0 18px #ffd70080,  0 0 46px #ffd70080; box-shadow: 0 0 21px #8B008B;}
+    10%{top: 349px; text-shadow: 0px 0px 8px #ffd70080,  0 0 19px #ffd70080,  0 0 45px #ffd70080; box-shadow: 0 0 20px #8B008B;}
+    20%{top: 351px; text-shadow: 0px 0px 9px #ffd70080,  0 0 20px #ffd70080,  0 0 43px #ffd70080; box-shadow: 0 0 19px #8B008B;}
+    30%{top: 349px; text-shadow: 0px 0px 10px #ffd70080,  0 0 21px #ffd70080,  0 0 42px #ffd70080; box-shadow: 0 0 18px #8B008B;}
+    40%{top: 351px; text-shadow: 0px 0px 11px #ffd70080,  0 0 22px #ffd70080,  0 0 41px #ffd70080; box-shadow: 0 0 17px #8B008B;}
+    50%{top: 349px; text-shadow: 0px 0px 12px #ffd70080,  0 0 23px #ffd70080,  0 0 40px #ffd70080; box-shadow: 0 0 16px #8B008B;}
+    60%{top: 351px; text-shadow: 0px 0px 11px #ffd70080,  0 0 22px #ffd70080,  0 0 41px #ffd70080; box-shadow: 0 0 15px #8B008B;}
+    70%{top: 349px; text-shadow: 0px 0px 9px #ffd70080,  0 0 21px #ffd70080,  0 0 42px #ffd70080; box-shadow: 0 0 16px #8B008B;}
+    80%{top: 351px; text-shadow: 0px 0px 8px #ffd70080,  0 0 20px #ffd70080,  0 0 43px #ffd70080; box-shadow: 0 0 17px #8B008B;}
+    90%{top: 349px; text-shadow: 0px 0px 7px #ffd70080,  0 0 19px #ffd70080,  0 0 44px #ffd70080; box-shadow: 0 0 18px #8B008B;}
+    100%{top: 351px; text-shadow: 0px 0px 6px #ffd70080,  0 0 18px #ffd70080,  0 0 45px #ffd70080; box-shadow: 0 0 19px #8B008B;}
+}
+
+@keyframes MenuMove{
+    0%{top: 451;}
+    10%{top: 349px;}
+    20%{top: 351px;}
+    30%{top: 349px;}
+    40%{top: 351px;}
+    50%{top: 349px;}
+    60%{top: 351px;}
+    70%{top: 349px;}
+    80%{top: 351px;}
+    90%{top: 349px;}
+    100%{top: 351px;}
+}
+
+@keyframes PacMove{
+    25%{top: -201px;}
+    50%{top: -200px;}
+    75%{top: -199px;}
+    100%{top: -200px;}
+}
+
+@keyframes DashMove{
+    25%{top: -271px;}
+    50%{top: -270px;}
+    75%{top: -269px;}
+    100%{top: -270px;}
+}
+
+@keyframes ManMove{
+    25%{top: -336px;}
+    50%{top: -335px;}
+    75%{top: -334px;}
+    100%{top: -335px;}
+}
+
+@keyframes WelcomePac{
+    0%{
+        left: -200px; top: -200px; 
+    }
+    70%{
+        left: 150px; top: -200px; 
+    }
+    85%{
+        left: 90px; top: -200px; 
+    }
+    100%{
+        left: 110px; top: -200px; 
+    }    
+
+}
+
+@keyframes WelcomeMan{
+    0%{
+        left: 1000px; top: -335px; 
+    }
+    65%{
+        left: 430px; top: -335px; 
+    }
+    100%{
+        left: 480px; top: -335px; 
+    }    
+
+}
+
+@keyframes WelcomeDash{
+    0%{left: -700px; top: -100px;}
+    45%{left: 420px; top: -100px;}
+    65%{left: 402px; top: -100px;}
+    85%{left: 402px; top: -300px;}
+    100%{left: 402px; top: -270px;}
+}
+
+@keyframes CloseEye{
+    0%{
+        background-image: url("Pac-Man Images/Pac.png");
+    }
+    5% {
+        background-image: url("Pac-Man Images/Pac-Close-Eye.png");
+    }
+    100%{
+        background-image: url("Pac-Man Images/Pac.png");
+    }
+}
+
+@keyframes ByePac{
+    0% {
+        background-color: black;
+        left: 250px;
+        color:#333300; text-shadow: none;
+        border-color: #8B008B;
+    }    
+    30%  {
+        background-color: black;
+        left: 230px; top: 350px; 
+        color:#ffd700; text-shadow: 0px 0px 10px #ffd700,  0 0 10px #ffd700,  0 0 100px #ffd700; font-size: 43px;
+        border-color: #8B008B; box-shadow: 0 0 30px #8B008B;
+    }
+    45%  {
+        background-color: black;
+        left: 280px; top: 350px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B80; box-shadow: none;
+    }
+    
+    100%   {
+        background-color: black;
+        left: -700px; top: 350px; 
+        color:#333300; text-shadow: none; 
+        border-color: #8B008B80; box-shadow: none;
+    }
+}
+
+@keyframes ByeExit{
+    0% {
+        background-color: black;
+        left: 250px;
+        color:#333300; text-shadow: none;
+        border-color: #8B008B;
+    }    
+    30%  {
+        background-color: black;
+        left: 230px; top: 350px; 
+        color:#ffd700; text-shadow: 0px 0px 10px #ffd700,  0 0 10px #ffd700,  0 0 100px #ffd700; font-size: 43px;
+        border-color: #8B008B; box-shadow: 0 0 30px #8B008B;
+    }
+    45%  {
+        background-color: black;
+        left: 280px; top: 350px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B80; box-shadow: none;
+    }
+    
+    100%   {
+        background-color: black;
+        left: -700px; top: 350px; 
+        color:#333300; text-shadow: none; 
+        border-color: #8B008B80; box-shadow: none;
+    }
+}
+
+@keyframes ByeStart{
+    0% {
+        background-color: black;
+        left: 250px;
+        color:#333300; text-shadow: none;
+        border-color: #8B008B;
+    }    
+    30%  {
+        background-color: black;
+        left: 230px; top: 350px; 
+        color:#ffd700; text-shadow: 0px 0px 10px #ffd700,  0 0 10px #ffd700,  0 0 100px #ffd700; font-size: 43px;
+        border-color: #8B008B; box-shadow: 0 0 30px #8B008B;
+    }
+    45%  {
+        background-color: black;
+        left: 280px; top: 350px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B80; box-shadow: none;
+    }
+    
+    100%   {
+        background-color: black;
+        left: -700px; top: 350px; 
+        color:#333300; text-shadow: none; 
+        border-color: #8B008B80; box-shadow: none;
+    }
+}
+
+@keyframes ByeOptions{
+    0%{
+        background-color: black;
+        left: 250px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B;
+    }    
+    30%{
+        background-color: black;
+        left: 270px;
+        color:#ffd700; text-shadow: 0px 0px 10px #ffd700,  0 0 10px #ffd700,  0 0 100px #ffd700; font-size: 43px;
+        border-color: #8B008B; box-shadow: 0 0 10px #8B008B80;
+    }
+    35%{
+        background-color: black;
+        left: 220px; 
+        color:#333300; text-shadow: none;
+        border-color: #8B008B80; box-shadow: none;
+    }
+    100%{
+        background-color: black;
+        left: 1400px;
+        color:#333300; text-shadow: none;
+        border-color: #8B008B80; box-shadow: none;
+    }
+}
+
+@keyframes ByePac{
+    0%{
+        left: 110px; top: -200px; 
+    } 
+
+    30%{
+        left: 90px; top: -200px; 
+    }
+    
+    50%{
+        left: 150px; top: -200px; 
+    }
+    100%{
+        left: -500px; top: -200px; 
+    }
+}
+
+@keyframes ByeMan{
+    0%{
+        left: 480px; top: -335px; 
+    }    
+    35%{
+        left: 430px; top: -335px; 
+    }
+    100%{
+        left: 1500px; top: -335px; 
+    }
+}
+
+@keyframes ByeDash{
+    0%{left: 402px; top: -270px;}
+    15%{left: 402px; top: -300px;}
+    35%{left: 402px; top: -100px;}
+    55%{left: 420px; top: -100px;}
+    100%{left: -700px; top: -100px;}
+}
+
+@keyframes FrameLight{
+    0%{
+        box-shadow: 0 0 100px #8B008B80 inset;
+    }
+    100%{
+        box-shadow: 0 0 100px #8B008B80 inset;
+    }
+}
+
+
+@keyframes IntroClick{
+    25%{top: 312px;}
+    50%{top: 308px;}
+    75%{top: 312px;}
+    100%{top: 308px;}
+}
+
+@keyframes WelcomeMadeBy{
+    0%{left:-1000px; top: 50px;}
+    80%{left: 0px; top: 50px;}
+    100%{left: 0px; top: 0px;}
+}
+
+@keyframes WelcomeH{
+    0%{top: -1000px;}
+    100%{top: 0px;}
+}
+
+@keyframes WelcomeA{
+    0%{top: 1000px;}
+    100%{top: 0px;}
+}
+
+@keyframes ByeH{
+    0%{top: 0px;}
+    100%{top: -1000px;}
+}
+
+@keyframes ByeA{
+    0%{top: 0px;}
+    100%{top: 1000px;}
+}
+
+@keyframes ByeMadeBy{
+    0%{left: 0px; top: 0px;}
+    20%{left: 0px; top: 50px;}
+    100%{left:-1000px; top: 50px;}
+}
+
+@keyframes ByeStart2{
+    0%{transform: scale(1.1)}
+    10%{transform: scale(1.2)}
+    20%{transform: scale(1.1)}
+    30%{transform: scale(1)}
+    40%{transform: scale(0.9)}
+    50%{transform: scale(0.8)}
+    60%{transform: scale(0.7)}
+    70%{transform: scale(0.6)}
+    80%{transform: scale(0.5)}
+    90%{transform: scale(0.4)}
+    100%{transform: scale(0.3)}
+}
+
