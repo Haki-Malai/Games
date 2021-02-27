@@ -1,3 +1,6 @@
+/* :root{
+    font-size: 0.5em;
+} */
 body {
     background: radial-gradient(
         circle,
@@ -7,12 +10,36 @@ body {
         rgb(8, 169, 180) 100%
     );
 }
-#sudoku{
+#grid{
     background: radial-gradient(circle,rgba(203, 207, 206, 0.705) 69%,rgb(186, 189, 189) 100%);
     position: relative;
-    top: 5rem;
+    top: 1em;
     left: 25%;
-    width: 30rem;
-    height: 30rem;
-    border-radius: 0.5rem;
+    width: 36em;
+    height: 36em;
+    border-radius: 0.5em;
+    overflow: hidden;
+    padding: 2em;
+}
+#sudoku{
+    position: relative;
+    width: 36em;
+    height: 36em;
+}
+.block{
+    background-color: blanchedalmond;
+    width: 3.85em;
+    height: 3.85em;
+    border: solid black;
+    border-width: 0.15em;
+    border-bottom: none;
+    border-right: none;
+}
+.bottomBlock{
+    border-bottom: solid black;
+    border-width: 0.3em;
+}
+.sideBlock{
+    border-right: solid black;
+    border-width: 0.3em;
 }
