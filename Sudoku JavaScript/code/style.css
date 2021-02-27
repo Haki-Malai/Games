@@ -1,0 +1,18 @@
+body {
+    background: radial-gradient(
+        circle,
+        rgb(131, 255, 234) 0%,
+        rgba(130, 255, 238, 0.726) 39%,
+        rgba(0, 255, 213, 0.705) 69%,
+        rgb(8, 169, 180) 100%
+    );
+}
+#sudoku{
+    background: radial-gradient(circle,rgba(203, 207, 206, 0.705) 69%,rgb(186, 189, 189) 100%);
+    position: relative;
+    top: 5rem;
+    left: 25%;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 0.5rem;
+}
