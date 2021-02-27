@@ -34,12 +34,26 @@ body {
     border-width: 0.15em;
     border-bottom: none;
     border-right: none;
+    padding: 0.1em;
 }
 .bottomBlock{
     border-bottom: solid black;
     border-width: 0.3em;
+    height: 3.7em;
 }
 .sideBlock{
     border-right: solid black;
     border-width: 0.3em;
+    width: 3.7em;
+}
+.input{
+    background-color: blanchedalmond;
+    border: none;
+    height: 1.7em;
+    width: 1.7em;
+    font-size: 2em;
+    text-align: center;
+}
+.input:focus{
+    outline: none;
 }
