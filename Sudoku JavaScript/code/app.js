@@ -52,151 +52,135 @@ function sample(arr, size) {
     }
     return shuffled.slice(0, size);
 }
-class HyperSudoku{
-    constructor(){
-        this.randomNumbers = sample([1, 2, 3, 4, 5, 6, 7, 8, 9], 9)
-    }
-    solve(grid){
-        //check if the grid is solvable
-        if((this.checkSolvable(grid)) == true){
-            console.log(grid)
-            return grid
-        }else{
-            return false
-        }
-        //solve helper to fill in the grid
-        this.solveHelper(grid)
-    }
-    printGrid(grid){
-        console.log(grid)
-    }
-    solveHelper(grid){
-        //Traverse through the cells of the sudoku
-        for(let i = 0; i < 10; i++){
-            for(let j = 0; j < 10; j++){
-                //if the current cell is unassigned
-                if(grid[i][j] == 0){
-                    //We check if we can assign a random number if not we try another
-                    for(let n = 0; n < 10; n++){
-                        //if the current random number can be assigned we assign it to the current cell
-                        if(this.canAssign(grid, i, j, n) == true){
-                            grid[i][j] == this.randomNumbers[n]
-                            //if the sudoku puzzle is solved we return true
-                            if(this.solveHelper(grid) == true){
-                                return true
-                            }else{
-                                //else we reset the current cell as unassigned
-                                grid[i][j] = 0
-                            }
-                        }
-                    }
-                    return false
-                }
-            }
-        }
-        return true
-    }
-    checkSolvable(grid){
-        //Traverse through all the cells and if there is a single 0 in the grid puzzle was unsolvable
-        for(let i = 0; i < 10; i++){
-            for(let j = 0; j < 10; j++){
-                if(grid[i][j] == 0){
-                    return false
-                }
-            }
-        }
-        return true
-    }
-    canAssign(grid, row, col, num){
-        //Returns true if we can assign the num given
-        result = (this.numInRow(grid, row, num) || this.numInCol(grid, col, num) || this.numInBox(grid, row, col, num))
-        //If currently in the hyper box we need to check if we can assign
-        if ((0 < row < 4) && (0 < col < 4) || (4 < row < 8) && (0 < col < 4) || (0 < row < 4) && (4 < col < 8) || (4 < row < 8) && (4 < col < 8)){
-            result = result || this.numInHyperBox(grid, row, col, num)
-        }
-        return (!result)
-    }
-    numInRow(grid, row, num){
-        result = false
-        for(let i = 0; i < 10; i++){
-            if(grid[row][i] == num){
-                result = true
-            }    
-        }
-        return result
-    }
-    numInCol(grid, row, num){
-        result = false
-        for(let i = 0; i < 10; i++){
-            if(grid[i][row] == num){
-                result = true
-            }    
-        }
-        return result
-    }
-    numInBox(grid, row, col, num){
-        result = false
-        box_row = row - (row % 3)
-        box_col = col - (col % 3)
-        for(let i = box_row; i< box_row+4; i++){
-            for(let j = box_row; j< box_row+4; j++){
-                if(grid[i][j] == num){
-                    result = true
-                }
-            }
-        }
-        return result
-    }
-    numInHyperBox(grid, row, col, num){
-        //return true if given num is not assigned in the 3x3 box that contains the given row of the sudoku grid, else returd false
-        result = false
-        if ((0 < row < 4) && (0 < col < 4)){
-            for(let i = 1; i<5; i++){
-                for(let i = 1; i<5; i++){
-                    if(grid[i][j] == num){
-                        result = true
-                    }
-                }    
-            }
-        }else if ((4 < row < 8) && (0 < col < 4)){
-            for(let i = 5; i<9; i++){
-                for(let j = 1; j<5; j++){
-                    if(grid[i][j] == num){
-                        result = true
-                    }
-                }    
-            }
-        }else if ((0 < row < 4) && (4 < col < 8)){
-            for(let i = 1; i<5; i++){
-                for(let j = 5; j<9; j++){
-                    if(grid[i][j] == num){
-                        result = true
-                    }
-                }    
-            }
-        }else if ((4 < row < 8) && (4 < col < 8)){
-            for(let i = 5; i<9; i++){
-                for(let j = 5; j<9; j++){
-                    if(grid[i][j] == num){
-                        result = true
-                    }
-                }    
-            }
-        }
-        return result 
+function solve(grid){
+    solveHelper(grid)
+    if (checkFilled(grid)){
+        return grid
+    }else{
+        return false
     }
 }
-//initialise empty 9 by 9 grid
+function canAssign(grid, row, col, value){
+    for(let i=0; i<9; i++){
+        if ((grid[row][i] == value) || (grid[i][col] == value) || valueInBox(grid, row, col, value) || valueInHyperBox(grid, row, col, value)){
+            return false
+        }
+    }
+    return true
+}
+function solveHelper(grid){
+    for(let i=0; i<9; i++){
+        for(let j=0; j<9; j++){
+            if(grid[i][j] == 0){
+                for(let n=1; n<10; n++){
+                    if (canAssign(grid, i, j, n)){
+                        grid[i][j] = n
+                        if(solveHelper(grid)){
+                            return grid
+                            continue
+                        }else{
+                            grid[i][j] = 0
+                        }
+                    }
+                }
+                return false
+            }
+        }
+    }
+    return true
+}
+function solutions(grid){
+    solutions = 0
+    for(let i=0; i<9; i++){
+        for(let j=0; j<9; j++){
+            if(grid[i][j] == 0){
+                for(let n=1; n<10; n++){
+                    if (canAssign(grid, i, j, n)){
+                        grid[i][j] = n
+                        if(solveHelper(grid)){
+                            solutions += 1
+                            grid[i][j] = 0
+                            continue
+                        }else{
+                            grid[i][j] = 0
+                        }
+                    }
+                }
+                return false
+            }
+        }
+    }
+    return true
+}
+function valueInBox(grid, row, col, value){
+    box_row = row - (row % 3)
+    box_col = col - (col % 3)
+
+    for (let i = box_row; i<box_row+3; i++){
+        for (let j = box_col; j<box_col+3; j++){
+            if (grid[i][j] == value){
+                return true
+            }
+        }
+    }
+    return false
+}
+function valueInHyperBox(grid, row, col, value){
+    result = false
+    if ((0 < row < 4) && (0 < col < 4)){
+        for (let i = 0; i<4; i++){
+            for (let j = 0; j<4; j++){
+                if (grid[i][j] == value){
+                    return true
+                }
+            }
+        }
+    }else if ((4 < row < 8) && (0 < col < 4)){
+        for (let i = 5; i<8; i++){
+            for (let j = 1; j<4; j++){
+                if (grid[i][j] == value){
+                    return true
+                }
+            }
+        }
+    }else if ((0 < row < 4) && (4 < col < 8)){
+        for (let i = 1; i<4; i++){
+            for (let j = 5; j<8; j++){
+                if (grid[i][j] == value){
+                    return true
+                }
+            }
+        }
+    }else if ((4 < row < 8) && (4 < col < 8)){
+        for (let i = 5; i<8; i++){
+            for (let j = 5; j<8; j++){
+                if (grid[i][j] == value){
+                    return true
+                }
+            }
+        }
+    }
+}
+function checkFilled(grid){
+    for(let i=0; i<9; i++){
+        for(let j=0; j<9; j++){
+            if(grid[i][j] == 0){
+                return false
+            }
+        }
+    }
+    return true
+}
 var grid = [
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
 ]
-let hyper = new HyperSudoku()
-hyper.solve(grid)
+solve(grid)
+console.log(grid)
