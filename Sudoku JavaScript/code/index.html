@@ -2,10 +2,18 @@
 <head>
 <title>Hyper Sudoku!</title>
 <link rel="stylesheet" href="style.css"></link>
+<script src="hard.js"></script>
 <script src="app.js"></script>
 </head>
 <body>
-    <div id = 'grid'>
-        <div id = 'sudoku'></div>
+    <div id = 'grid' class="unselectable">
+        <div id = 'sudoku' class="unselectable"></div>
+        <div id = 'menu' class="unselectable">
+            <div><input id='restart' class="button unselectable" value="Restart"></div>
+            <div><input id='solution' class="button unselectable" value="Show Solution"></div>
+            <div><input id='check' class="button unselectable" value="Check Puzzle"></div>
+            <div><select name="level"class="button unselectable"><option value="0">Level</option><option id='easy' value="1">Easy</option><option id='medium' value="2">Medium</option><option id='hard' value="3">Hard</option></select></div>
+            <div><input id='newgame' class="button unselectable" value="New Game" ></div>
+        </div>
     </div>
 </body>

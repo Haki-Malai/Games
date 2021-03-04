@@ -10,22 +10,37 @@ body {
         rgb(8, 169, 180) 100%
     );
 }
+
 #grid{
     background: radial-gradient(circle,rgba(203, 207, 206, 0.705) 69%,rgb(186, 189, 189) 100%);
-    position: relative;
-    top: 1em;
-    left: 25%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15em;
     width: 36em;
     height: 36em;
     border-radius: 0.5em;
-    overflow: hidden;
     padding: 2em;
 }
+
 #sudoku{
     position: relative;
     width: 36em;
     height: 36em;
 }
+
+#menu{
+    position: fixed;
+    top: 50%;
+    left: 125%;
+    transform: translate(-50%, -50%);
+    width: 15em;
+    border-radius: 1em;
+    height: 20em;
+    background-color: whitesmoke;
+}
+
 .block{
     background-color: blanchedalmond;
     width: 3.85em;
@@ -36,16 +51,19 @@ body {
     border-right: none;
     padding: 0.1em;
 }
+
 .bottomBlock{
     border-bottom: solid black;
     border-width: 0.3em;
     height: 3.7em;
 }
+
 .sideBlock{
     border-right: solid black;
     border-width: 0.3em;
     width: 3.7em;
 }
+
 .input{
     background-color: blanchedalmond;
     border: none;
@@ -54,6 +72,45 @@ body {
     font-size: 2em;
     text-align: center;
 }
+
 .input:focus{
     outline: none;
+}
+
+.button{
+    position: relative;
+    top: 1em;
+    left: 2em;
+    width: 10rem;
+    height: 2rem;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 1px;
+    text-decoration: none;
+    line-height: 23px;
+    font-size: 10px;
+    display: block;
+    margin: 2em;
+    border: 1px solid #85796b;
+    background-image: linear-gradient(to bottom, #85796b, #665d53);
+    border-radius: 15px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #85796b, 0 4px 2px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.button:hover{
+    cursor: pointer;
+    background: #85796b;
+    background-image: linear-gradient(top, #85796b, #5e544a);
+}
+
+.button:active{
+    top: 1.2em;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+.unselectable{
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
 }
