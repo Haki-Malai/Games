@@ -126,10 +126,9 @@ function valueInBox(grid, row, col, value){
     return false
 }
 function valueInHyperBox(grid, row, col, value){
-    result = false
     if ((0 < row < 4) && (0 < col < 4)){
-        for (let i = 0; i<4; i++){
-            for (let j = 0; j<4; j++){
+        for (let i = 1; i<4; i++){
+            for (let j = 1; j<4; j++){
                 if (grid[i][j] == value){
                     return true
                 }
@@ -160,6 +159,7 @@ function valueInHyperBox(grid, row, col, value){
             }
         }
     }
+    return false
 }
 function checkFilled(grid){
     for(let i=0; i<9; i++){
