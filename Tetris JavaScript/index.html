@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Tetris Javascript</title>
+    <script src="app.js"></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <span id="title">TETRIS</span>
+    </header>
+    <div id="grid" class='box'></div>
+    <div id="next" class="box">
+        <div class="next-shape">
+            <div class="next-grid"></div>
+        </div>
+    </div>
+    <div id="info" class="box">
+        <h2 id='score'>SCORE:
+            <br><span id='scoreDisplay' class="infoBig">0</span>
+        </h2>
+        <h2 id='level'>LEVEL:
+            <br><span id='levelDisplay' class="infoBig">0</span>
+        </h2>
+        <h2 id='lines'>LINES:
+            <br><span id='linesDisplay' class="infoBig">0</span>
+        </h2>
+    </div>
+    <button id='stateBtn' class="button">START / PAUSE</button>
+    <button id='settingsBtn' class="button">SETTINGS</button>
+    <button id='guideBtn' class="button">GUIDE</button>
+    </main>
+</body>
+
+</html>
