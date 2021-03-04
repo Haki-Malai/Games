@@ -1,0 +1,173 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.6rem;
+    margin: auto;
+    max-width: 60rem;
+    color: #d8edea;
+    background: radial-gradient(
+        circle,
+        rgb(250, 250, 250) 0%,
+        rgba(187, 187, 187, 0.726) 39%,
+        rgba(0, 0, 0, 0.4) 69%,
+        rgba(0, 0, 0, 0.5) 89%,
+        rgb(0, 0, 0, 0.6) 100%
+    );
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+header {
+    text-align: center;
+    margin-top: 3rem;
+}
+#title{
+    text-shadow: 1px 5px 0 #d8edea;
+    color: #85796b;
+    font-size: 4em;
+    font-weight: 500;
+    letter-spacing: 1.5rem;
+}
+
+div {
+    height: 2rem;
+    width: 2rem;
+}
+
+.game-area {
+    display: flex;
+    justify-content: center;
+}
+
+.game {
+    height: 0;
+    width: 300px;
+}
+
+#grid {
+	position: relative;
+    left: 18.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 20rem;
+    height: 42rem;
+	overflow: hidden;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.block, .block2, .block3, .block4, .block5 {
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow: 5px 5px 3px #85796b;
+}
+.block {
+    background-image: url(images/blue_block.png);
+}
+
+.block2 {
+    background-image: url(images/purple_block.png);
+}
+
+.block3 {
+    background-image: url(images/green_block.png);
+}
+
+.block4 {
+    background-image: url(images/navy_block.png);
+}
+
+.block5 {
+    background-image: url(images/pink_block.png);
+}
+
+#info{
+    font-size: 0.7rem;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-top: 1rem;
+	position: relative;
+    top: -50rem;
+    left: -2.5rem;
+    width: 15rem;
+    height: 27rem;
+}
+
+#next{
+    align-items: center;
+	position: relative;
+    top: -30rem;
+    left: 44rem;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 15px;
+}
+.next-shape{
+    position: relative;
+    top: 4.1rem;
+    left: 2.4rem;
+    width: 10rem;
+    padding-left: 2rem;
+    margin-top: -5rem;
+}
+.next-grid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 8rem;
+    height: 8rem;
+}
+#stateBtn, #settingsBtn, #guideBtn{
+    position: relative;
+    left: 42.5rem;
+    top: -56rem;
+}
+
+#stateBtn:active, #settingsBtn:active, #guideBtn:active{
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset,
+        0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    top: -55.7rem;
+}
+
+.box{
+    background: #f0f0f0;
+    background-image: linear-gradient(#d0d0d0, #f0f0f0);
+    color: #85796b;
+    border-radius: 15px;
+	box-shadow: 0 10px 100px rgb(0, 0, 0, 0.5);
+}
+
+.infoBig{
+    font-size: 5rem;
+    color: rgb(133, 121, 107, 0.5);
+}
+
+.button{
+    position: relative;
+    width: 13rem;
+    height: 2.2rem;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 1px;
+    text-decoration: none;
+    line-height: 23px;
+    font-size: 10px;
+    display: block;
+    margin: 30px;
+    border: 1px solid #85796b;
+    background-image: linear-gradient(to bottom, #85796b, #665d53);
+    border-radius: 15px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #85796b, 0 4px 2px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.button:hover{
+    cursor: pointer;
+    background: #85796b;
+    background-image: linear-gradient(top, #85796b, #5e544a);
+}
