@@ -1,7 +1,9 @@
 window.addEventListener('load', ()=>{
+    console.log()
     let sudoku = {
         id : document.querySelector('#sudoku'),
-        difficulty : 'medium',
+        puzzle : medium[(Math.floor(Math.random() * 2000))],
+        difficulty : 2,
         blocks : [],
         inputs : [],
         makeElements : ()=>{
@@ -51,11 +53,57 @@ window.addEventListener('load', ()=>{
         showPuzzle : ()=>{
             for (let i=0; i<9; i++){
                 for (let j=0; j<9; j++){
-                    if (hard[1][0][i][j] != 0){
-                        document.getElementById(sudoku.inputs[i][j]).setAttribute('readonly', hard[1][0][i][j])
-                        document.getElementById(sudoku.inputs[i][j]).value = hard[1][0][i][j]
+                    if (sudoku.puzzle[0][i][j] != 0){
+                        document.getElementById(sudoku.inputs[i][j]).setAttribute('readonly', sudoku.puzzle[0][i][j])
+                        document.getElementById(sudoku.inputs[i][j]).value = sudoku.puzzle[0][i][j]
+                    }else{
+                        document.getElementById(sudoku.inputs[i][j]).value = ''
                     }
                 }
+            }
+        },
+        restart : ()=>{
+            for (let i=0; i<9; i++){
+                for (let j=0; j<9; j++){
+                    if (sudoku.puzzle[0][i][j] == 0){
+                        document.getElementById(sudoku.inputs[i][j]).value = ''
+                    }
+                }
+            }
+        },
+        showSolution : ()=>{
+            for (let i=0; i<9; i++){
+                for (let j=0; j<9; j++){
+                    document.getElementById(sudoku.inputs[i][j]).value = sudoku.puzzle[1][i][j]
+                }
+            }
+        },
+        check : ()=>{
+            for (let i=0; i<9; i++){
+                for (let j=0; j<9; j++){
+                    if ((sudoku.puzzle[0][i][j] == 0)&&(document.getElementById(sudoku.inputs[i][j]).value != sudoku.puzzle[1][i][j])){
+                        document.getElementById(sudoku.inputs[i][j]).style.color='red'
+                    }else if ((sudoku.puzzle[0][i][j] == 0)&&(document.getElementById(sudoku.inputs[i][j]).value == puzzle[1][i][j])){
+                        document.getElementById(sudoku.inputs[i][j]).style.color='green'
+                    }
+                }
+            }
+            setTimeout(()=>{
+                for (let i=0; i<9; i++){
+                    for (let j=0; j<9; j++){
+                        document.getElementById(sudoku.inputs[i][j]).style.color = 'black'
+                    }
+                }
+            }, 1000)
+        },
+        newGame : ()=>{
+            sudoku.showPuzzle()
+            if (difficulty = 1){
+                sudoku.puzzle = easy[(Math.floor(Math.random() * 2000))]
+            }else if (difficulty = 2){
+                sudoku.puzzle = medium[(Math.floor(Math.random() * 2000))]
+            }else if (difficulty = 3){
+                sudoku.puzzle = hard[(Math.floor(Math.random() * 2000))]
             }
         }
     }
@@ -65,18 +113,16 @@ window.addEventListener('load', ()=>{
         id : document.querySelector('#menu'),
         restart : document.querySelector('#restart'),
         check : document.querySelector('#check'),
-        easy : document.querySelector('#easy'),
-        medium : document.querySelector('#medium'),
-        hard : document.querySelector('#hard'),
+        selector : document.querySelector('#selector'),
         solution : document.querySelector('#solution'),
         newgame : document.querySelector('#newgame'),
         addEventListeners : ()=>{
-            easy.addEventListener('click',()=> sudoku.difficulty = 'easy')
-            medium.addEventListener('click',()=> sudoku.difficulty = 'medium')
-            hard.addEventListener('click',()=> sudoku.difficulty = 'hard')
-            restart.addEventListener('click',()=> sudoku.restart())
-            check.addEventListener('click', ()=> sudoku.check())
-            solution.addEventListener('click', ()=> sudoku.solution())
+            menu.selector.addEventListener('change', ()=>sudoku.difficulty=event.target.value)
+            menu.restart.addEventListener('click', sudoku.restart)
+            menu.check.addEventListener('click', sudoku.check)
+            menu.solution.addEventListener('click', sudoku.showSolution)
+            menu.newgame.addEventListener('click', sudoku.newGame)
         }
     }
+    menu.addEventListeners()
 })
