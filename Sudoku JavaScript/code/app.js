@@ -1,5 +1,4 @@
 window.addEventListener('load', ()=>{
-    console.log()
     let sudoku = {
         id : document.querySelector('#sudoku'),
         puzzle : medium[(Math.floor(Math.random() * 2000))],
@@ -14,8 +13,7 @@ window.addEventListener('load', ()=>{
                 sudoku.blocks[i] = []
                 sudoku.inputs[i] = []
                 for (let j =0; j<9; j++){
-                    //Add border to bot and right side
-                    if (((j==8)&&(i==8))){
+                    if (((j==8)&&(i==8))){//Add border to bot and right side
                         sudoku.id.innerHTML += "<div id = \'block[" + i + "][" + j + "]\'class=\'block bottomBlock sideBlock\'></div>"
                     }else if (j == 8){
                         sudoku.id.innerHTML += "<div id = \'block[" + i + "][" + j + "]\'class=\'block bottomBlock\'></div>"
@@ -33,6 +31,13 @@ window.addEventListener('load', ()=>{
                     //Add input
                     sudoku.blocks[i][j].innerHTML += "<input id = \'input["+i+']['+j+"]\' class =\"input\" value=\"\" size =\"1\" maxlength=\"1\">"
                     sudoku.inputs[i][j] = 'input['+i+']['+j+']'
+                    //color hyper boxes
+                    if (((1 <= i) && (i<= 3) && (1 <= j) && (j <= 3))||((5 <= i) && (i <= 7) && ((1 <= j) && (j <= 3)))||((1 <= i) && (i <= 3) && ((5 <= j) && (j <= 7)))||(((5 <= i) && (i <= 7)) && ((5 <= j) && (j <= 7)))){//
+                        sudoku.blocks[i][j].style.backgroundColor = 'rgb(224, 144, 134)'
+                        sudoku.blocks[i][j].innerHTML += "<input id = \'input["+i+']['+j+"]\' class =\"input hyper\" value=\"\" size =\"1\" maxlength=\"1\">"
+                    }else {
+                        sudoku.blocks[i][j].innerHTML += "<input id = \'input["+i+']['+j+"]\' class =\"input\" value=\"\" size =\"1\" maxlength=\"1\">"
+                    }
                     //Make border fatter where it's needed
                     if (j % 3 == 0){
                         sudoku.blocks[i][j].style.height = '3.7em'
@@ -83,7 +88,7 @@ window.addEventListener('load', ()=>{
                 for (let j=0; j<9; j++){
                     if ((sudoku.puzzle[0][i][j] == 0)&&(document.getElementById(sudoku.inputs[i][j]).value != sudoku.puzzle[1][i][j])){
                         document.getElementById(sudoku.inputs[i][j]).style.color='red'
-                    }else if ((sudoku.puzzle[0][i][j] == 0)&&(document.getElementById(sudoku.inputs[i][j]).value == puzzle[1][i][j])){
+                    }else if ((sudoku.puzzle[0][i][j] == 0)&&(document.getElementById(sudoku.inputs[i][j]).value == sudoku.puzzle[1][i][j])){
                         document.getElementById(sudoku.inputs[i][j]).style.color='green'
                     }
                 }
@@ -97,14 +102,17 @@ window.addEventListener('load', ()=>{
             }, 1000)
         },
         newGame : ()=>{
-            sudoku.showPuzzle()
-            if (difficulty = 1){
+            if (sudoku.difficulty == 1){
+                console.log('selected easy')
                 sudoku.puzzle = easy[(Math.floor(Math.random() * 2000))]
-            }else if (difficulty = 2){
+            }else if (sudoku.difficulty == 2){
+                console.log('selected medium')
                 sudoku.puzzle = medium[(Math.floor(Math.random() * 2000))]
-            }else if (difficulty = 3){
+            }else if (sudoku.difficulty == 3){
+                console.log('selected hard')
                 sudoku.puzzle = hard[(Math.floor(Math.random() * 2000))]
             }
+            sudoku.showPuzzle()
         }
     }
     sudoku.makeElements()
