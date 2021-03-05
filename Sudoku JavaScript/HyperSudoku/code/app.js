@@ -5,6 +5,7 @@ window.addEventListener('load', ()=>{
         difficulty : 2,
         blocks : [],
         inputs : [],
+        ckTimeout : [],
         makeElements : ()=>{
             fixLeft = 0
             for (let i = 0; i<9; i++){
@@ -93,7 +94,8 @@ window.addEventListener('load', ()=>{
                     }
                 }
             }
-            setTimeout(()=>{
+            sudoku.ckTimeout
+            sudoku.ckTimeout = setTimeout(()=>{
                 for (let i=0; i<9; i++){
                     for (let j=0; j<9; j++){
                         document.getElementById(sudoku.inputs[i][j]).style.color = 'black'
