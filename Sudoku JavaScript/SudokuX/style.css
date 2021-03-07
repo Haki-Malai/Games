@@ -1,6 +1,6 @@
-/* :root{
-    font-size: 0.5em;
-} */
+:root{
+        font-size: 0.8em;
+}
 body {
     background: radial-gradient(
         circle,
@@ -14,10 +14,9 @@ body {
 #grid{
     background: radial-gradient(circle,rgba(203, 207, 206, 0.705) 69%,rgb(186, 189, 189) 100%);
     position: fixed;
-    top: 50%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 15em;
     width: 36em;
     height: 36em;
     border-radius: 0.5em;
@@ -32,13 +31,14 @@ body {
 
 #menu{
     position: fixed;
-    top: 50%;
-    left: 125%;
+    top: 110%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 15em;
+    width: 40em;
     border-radius: 1em;
-    height: 20em;
+    height: 5em;
     background-color: whitesmoke;
+    align-items: center;
 }
 
 .block{
@@ -80,10 +80,8 @@ body {
 }
 
 .button{
-    position: relative;
-    top: 1em;
-    left: 2em;
-    width: 10rem;
+    position: absolute;
+    width: 6rem;
     height: 2rem;
     text-align: center;
     color: #fff;
@@ -107,9 +105,21 @@ body {
 }
 
 .button:active{
-    top: 1.2em;
+    top: 0.5em;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset,
     0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+#newgame{
+    left: 40em;
+}
+#selector{
+    left: 30em;
+}
+#check{
+    left: 20em;
+}
+#solution{
+    left: 10em;
 }
 .unselectable{
     -webkit-touch-callout: none;
