@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+<title>Sudoku X!</title>
+<link rel="stylesheet" href="style.css"></link>
+<script src="easy.js"></script>
+<script src="medium.js"></script>
+<script src="hard.js"></script>
+<script src="app.js"></script>
+<meta name=”viewport” content=”width=device-width, initial-scale=1″>
+</head>
+<body>
+    <div id = 'grid' class="unselectable">
+        <div id = 'sudoku' class="unselectable"></div>
+        <div id = 'menu' class="unselectable">
+            <button id='restart' class="button unselectable" >Restart</button>
+            <button id='solution' class="button unselectable" >Solution</button>
+            <button id='check' class="button unselectable" >Check</button>
+            <select id ='selector' name="level"class="button unselectable"><option value="0">Level</option><option id='easy' value="1">Easy</option><option id='medium' value="2">Medium</option><option id='hard' value="3">Hard</option></select>
+            <button id='newgame' class="button unselectable" >New Game</button>
+        </div>
+    </div>
+</body>
