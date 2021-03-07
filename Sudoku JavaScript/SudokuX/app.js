@@ -31,8 +31,8 @@ window.addEventListener('load', ()=>{
                     //Add input
                     sudoku.blocks[i][j].innerHTML += "<input id = \'input["+i+']['+j+"]\' class =\"input\" value=\"\" size =\"1\" maxlength=\"1\">"
                     sudoku.inputs[i][j] = 'input['+i+']['+j+']'
-                    //color hyper boxes
-                    if (((1 <= i) && (i<= 3) && (1 <= j) && (j <= 3))||((5 <= i) && (i <= 7) && ((1 <= j) && (j <= 3)))||((1 <= i) && (i <= 3) && ((5 <= j) && (j <= 7)))||(((5 <= i) && (i <= 7)) && ((5 <= j) && (j <= 7)))){//
+                    //color x boxes
+                    if ((i == j) || (i + j == 8)){
                         sudoku.blocks[i][j].style.backgroundColor = 'rgb(224, 144, 134)'
                         sudoku.blocks[i][j].innerHTML += "<input id = \'input["+i+']['+j+"]\' class =\"input hyper\" value=\"\" size =\"1\" maxlength=\"1\">"
                     }else {
