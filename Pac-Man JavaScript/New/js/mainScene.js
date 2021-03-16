@@ -8,24 +8,24 @@ class main extends Phaser.Scene
     preload ()
     {
         this.load.image('grid', 'assets/sprites/testgrid.png')
-        this.load.spritesheet('PacMan', 'assets/sprites/PacMan.png', { frameWidth: 86, frameHeight: 90 })
+        this.load.spritesheet('PacMan', 'assets/sprites/PacMan.png', { frameWidth: 85, frameHeight: 91 })
+        
     }
 
     create ()
     {
         const pacman = {
-            width: width/75,
-            height: width/75,
-            x: width/2 - 27,
-            y: height/2 - 34
+            width: config.width/80,
+            height: config.width/80,
+            x: config.width/2-config.width/85-1,
+            y: config.height/2-config.width/60,
+            obj: ''
         }
-        const grid = this.add.image(width/2, height/2, 'grid').setDisplaySize(width*2, width*2)
-        const cursors = this.input.keyboard.createCursorKeys()
         this.anims.create({
             key: 'eat',
             frames: this.anims.generateFrameNumbers('PacMan', { frames: [ 0, 1, 2, 3 ] }),
             frameRate: 8,
-            repeat: -1
+            repeat: 1
         })
         this.anims.create({
             key: 'idle',
@@ -33,12 +33,25 @@ class main extends Phaser.Scene
             frameRate: 8,
             repeat: -1
         })
-        const cody = this.add.sprite(pacman.x,  pacman.y).setDisplaySize(pacman.width, pacman.height).setDisplayOrigin(0)
-        cody.play('idle')
+        pacman.obj = this.add.sprite(pacman.x,  pacman.y).setDisplaySize(pacman.width, pacman.height).setDisplayOrigin(0).setScrollFactor(0)
+        pacman.obj.play('eat')
+
+        const grid = {
+            width: config.height*3,
+            height: config.height*3,
+            x: config.width/2,
+            y: config.height/2,
+            obj : ''
+        }
+        grid.obj = this.add.image(grid.x, grid.y, 'grid').setDisplaySize(grid.height, grid.width)
+
+        const cursors = this.input.keyboard.createCursorKeys()
+        const cam = this.cameras.main
+        cam.setBackgroundColor('rgba(55, 11,27, 0.5)')
+        cam.scrollY += pacman.width*4.205*14*-1
     }
 
     update (time, delta)
     {
-        const cam = this.cameras.main
     }
 }

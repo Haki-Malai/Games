@@ -4,7 +4,7 @@ const height = window.innerHeight
 const config = {
     type: Phaser.AUTO,
     parent: 'phaser-main',
-    width: width,
+    width: height*1.8,
     height: height,
     scene: [ main ]
 };
