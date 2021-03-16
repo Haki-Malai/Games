@@ -1,4 +1,4 @@
-class main extends Phaser.Scene
+class playScene extends Phaser.Scene
 {
     constructor ()
     {
@@ -49,7 +49,7 @@ class main extends Phaser.Scene
 
     update (time, delta)
     {
-
+        const pointer = this.input.activePointer;
         this.cursors = this.input.keyboard.createCursorKeys()
 
         const cam = this.cameras.main
@@ -66,7 +66,7 @@ class main extends Phaser.Scene
             cam.scrollY -= this.gdata.speed
         }
         
-        if (this.cursors.left.isDown){
+        if ((this.cursors.left.isDown) || (pointer.leftButtonDown())){
             this.gdata.currentDirection = 'Left'
         } else if (this.cursors.right.isDown){
             this.gdata.currentDirection = 'Right'

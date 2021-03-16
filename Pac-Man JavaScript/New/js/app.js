@@ -6,7 +6,16 @@ const config = {
     parent: 'phaser-main',
     width: height*1.8,
     height: height,
-    scene: [ main ]
+    scene: [ loadScene, playScene ], //, menuScene
+    render: {
+        pixelArt: true
+    },
+    physics: {
+        default: "arcade",
+        arcade: {
+            debug: true
+        }
+    },
 };
 
 const game = new Phaser.Game(config);
