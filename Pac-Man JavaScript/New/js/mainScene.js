@@ -3,6 +3,21 @@ class main extends Phaser.Scene
     constructor ()
     {
         super()
+        this.pacman = {
+            width: config.width/80,
+            height: config.width/80,
+            x: config.width/2-config.width/85-1,
+            y: config.height/2-config.width/60,
+            obj: ''
+        }
+        this.grid = {
+            width: config.height*3,
+            height: config.height*3,
+            x: config.width/2,
+            y: config.height/2,
+            obj : ''
+        }
+        this.gdata = new GameData(this.pacman.width*4.205, 3, 0, 0, 14, 15, 'Right', 'Right')
     }
 
     preload ()
@@ -14,18 +29,11 @@ class main extends Phaser.Scene
 
     create ()
     {
-        const pacman = {
-            width: config.width/80,
-            height: config.width/80,
-            x: config.width/2-config.width/85-1,
-            y: config.height/2-config.width/60,
-            obj: ''
-        }
         this.anims.create({
             key: 'eat',
             frames: this.anims.generateFrameNumbers('PacMan', { frames: [ 0, 1, 2, 3 ] }),
             frameRate: 8,
-            repeat: 1
+            repeat: -1
         })
         this.anims.create({
             key: 'idle',
@@ -33,25 +41,52 @@ class main extends Phaser.Scene
             frameRate: 8,
             repeat: -1
         })
-        pacman.obj = this.add.sprite(pacman.x,  pacman.y).setDisplaySize(pacman.width, pacman.height).setDisplayOrigin(0).setScrollFactor(0)
-        pacman.obj.play('eat')
+        this.pacman.obj = this.add.sprite(this.pacman.x,  this.pacman.y).setDisplaySize(this.pacman.width, this.pacman.height).setDisplayOrigin(0).setScrollFactor(0)
+        this.pacman.obj.play('eat')
 
-        const grid = {
-            width: config.height*3,
-            height: config.height*3,
-            x: config.width/2,
-            y: config.height/2,
-            obj : ''
-        }
-        grid.obj = this.add.image(grid.x, grid.y, 'grid').setDisplaySize(grid.height, grid.width)
-
-        const cursors = this.input.keyboard.createCursorKeys()
-        const cam = this.cameras.main
-        cam.setBackgroundColor('rgba(55, 11,27, 0.5)')
-        cam.scrollY += pacman.width*4.205*14*-1
+        this.grid.obj = this.add.image(this.grid.x, this.grid.y, 'grid').setDisplaySize(this.grid.height, this.grid.width)
     }
 
     update (time, delta)
     {
+
+        this.cursors = this.input.keyboard.createCursorKeys()
+
+        const cam = this.cameras.main
+        cam.setBackgroundColor('rgba(55, 11,27, 0.5)')
+
+        console.log(this.gdata)
+        if (this.gdata.currentDirection == 'Right'){
+            cam.scrollX += this.gdata.speed
+        } else if (this.gdata.currentDirection == 'Left'){
+            cam.scrollX -= this.gdata.speed
+        } else if (this.gdata.currentDirection == 'Up'){
+            cam.scrollY += this.gdata.speed
+        } else if (this.gdata.currentDirection == 'Down'){
+            cam.scrollY -= this.gdata.speed
+        }
+        
+        if (this.cursors.left.isDown){
+            this.gdata.currentDirection = 'Left'
+        } else if (this.cursors.right.isDown){
+            this.gdata.currentDirection = 'Right'
+        } else if (this.cursors.down.isDown){
+            this.gdata.currentDirection = 'Up'
+        } else if (this.cursors.up.isDown){
+            this.gdata.currentDirection = 'Down'
+        }
+        // else if (this.cursors.right.isDown)
+        // {
+        //     data.currentDirection = 'Left'
+        // }
+
+        // if (this.cursors.up.isDown)
+        // {
+        //     data.currentDirection = 'Left'
+        // }
+        // else if (this.cursors.down.isDown)
+        // {
+        //     data.currentDirection = 'Left'
+        // }
     }
 }
