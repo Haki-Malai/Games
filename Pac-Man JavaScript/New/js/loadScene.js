@@ -1,57 +1,15 @@
 class loadScene extends Phaser.Scene {
     constructor() {
-        super({
-            key: CST.SCENES.LOAD
-        })
+        super('loadScene')
     }
     init() {
-
-    }
-    loadImages() {
-        this.load.setPath("./assets/sprite");
-
-        for (let prop in CST.IMAGE) {
-            this.load.image(CST.IMAGE[prop], CST.IMAGE[prop]);
-        }
-    }
-    loadAudio() {
-        this.load.setPath("./assets/sprite");
-
-        for (let prop in CST.AUDIO) {
-            //@ts-ignore
-            this.load.audio(CST.AUDIO[prop], CST.AUDIO[prop]);
-        }
-    }
-    loadSprites(frameConfig) {
-        this.load.setPath("./assets/sprite");
-
-        for (let prop in CST.SPRITE) {
-            //@ts-ignore
-            this.load.spritesheet(CST.SPRITE[prop], CST.SPRITE[prop], frameConfig);
-        }
+        this.load.image('grid', 'assets/sprites/testgrid.png')
+        this.load.image('point', 'assets/sprites/Point.png')
+        this.load.spritesheet('PacMan', 'assets/sprites/PacMan.png', { frameWidth: 85, frameHeight: 91 })
+        this.add.image(width/2, height/2, 'point').setDisplaySize(height/10, width/10)
     }
     preload() {
-        this.load.spritesheet("grid", "./assets/sprites/grid.png", {frameHeight: 64, frameWidth: 64});
-        //load atlases
-        this.load.atlas("pacman", "./assets/sprites/PacMan.png")
-        this.load.atlas("testgrid", "./assets/sprites/testgrid.png", "./assets/sprite/daze.json")
-        this.load.spritesheet("start", "./assets/sprites/start.png", {frameHeight: 192, frameWidth: 192});
-
-        //load image, spritesheet, sound
-        this.loadAudio();
-        this.loadSprites({
-            frameHeight: 32,
-            frameWidth: 32
-        });
-        this.loadImages();
-
-        //create loading bar
-
-        let loadingBar = this.add.graphics({
-            fillStyle: {
-                color: 0xffffff //white
-            }
-        })
+        
 
         /*
         Loader Events:
@@ -60,30 +18,34 @@ class loadScene extends Phaser.Scene {
         */
 
         //simulate large load
-        /*
-        for(let i = 0; i < 100; i++){
-            this.load.spritesheet("cat" + i, "./assets/cat.png", {
+        
+        for(let i = 0; i < 1000; i++){
+            this.load.spritesheet("pacman" + i, "./assets/sprites/PacMan.png", {
                 frameHeight: 32,
                 frameWidth: 32
             });        
-        }*/
-
+        }
         this.load.on("progress", (percent) => {
-            loadingBar.fillRect(this.game.renderer.width / 2, 0, 50, this.game.renderer.height * percent);
-            console.log(percent);
+            if(percent > 1){
+            }
         })
 
         this.load.on("complete", () => {
-            //this.scene.start(CST.SCENES.MENU, "hello from LoadScene");
-        });
+            console.log('done')
+            this.scene.start('gameScene');
+        })
 
         this.load.on("load", (file) => {
             console.log(file.src)
         })
     }
-    create() {
+    create() {//create loading bar
+        
+        
 
-        this.scene.start(CST.SCENES.MENU);
+
+    }
+    update(){
     }
 }
 //https://www.youtube.com/watch?v=OS7neDUUhPE

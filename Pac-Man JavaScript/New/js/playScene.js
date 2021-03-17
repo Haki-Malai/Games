@@ -2,7 +2,7 @@ class playScene extends Phaser.Scene
 {
     constructor ()
     {
-        super()
+        super('gameScene')
         this.pacman = {
             width: config.width/80,
             height: config.width/80,
