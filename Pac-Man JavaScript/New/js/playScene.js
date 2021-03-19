@@ -25,7 +25,7 @@ class playScene extends Phaser.Scene
             frameRate: 1,
             repeat: -1
         })
-        grid.obj = this.add.image(grid.x, grid.y, 'grid').setDisplaySize(grid.height, grid.width)
+        grid.obj = this.add.image(grid.x, grid.y, 'grid').setDisplaySize(grid.height, grid.width).setDisplayOrigin(0)
         pacman.obj = this.add.sprite(pacman.x,  pacman.y, 'PacMan').setDisplaySize(pacman.width, pacman.height).setDisplayOrigin(0).setScrollFactor(0)
         pacman.obj.play('eat')
     }
@@ -40,37 +40,31 @@ class playScene extends Phaser.Scene
         this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
         this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
-        if (gdata.currentDirection == 'Right'){
-            cam.scrollX += gdata.speed
-        } else if (gdata.currentDirection == 'Left'){
-            cam.scrollX -= gdata.speed
-        } else if (gdata.currentDirection == 'Up'){
-            cam.scrollY += gdata.speed
-        } else if (gdata.currentDirection == 'Down'){
-            cam.scrollY -= gdata.speed
+        if (gdata.canMove){
+            if ((gdata.currentDirection == 'Right') && (gdata.canMove())){
+                cam.scrollX  += gdata.speed
+                gdata.movedX += gdata.speed
+            } else if ((gdata.currentDirection == 'Left') && (gdata.canMove())){
+                cam.scrollX -= gdata.speed
+                gdata.movedX -= gdata.speed
+            } else if ((gdata.currentDirection == 'Up') && (gdata.canMove())){
+                cam.scrollY -= gdata.speed
+                gdata.movedY -= gdata.speed
+            } else if ((gdata.currentDirection == 'Down') && (gdata.canMove())){
+                cam.scrollY += gdata.speed
+                gdata.movedY += gdata.speed
+            }
         }
-        
-        if ((this.cursors.left.isDown) || (this.pointer.leftButtonDown())){
-            gdata.changeDirection('Left')
+        if (this.cursors.left.isDown){
+            gdata.wishedDirection = 'Left'
         } else if (this.cursors.right.isDown){
-            gdata.changeDirection('Right')
-        } else if (this.cursors.down.isDown){
-            gdata.changeDirection('Up')
+            gdata.wishedDirection = 'Right'
         } else if (this.cursors.up.isDown){
-            gdata.changeDirection('Down')
+            gdata.wishedDirection = 'Up'
+        } else if (this.cursors.down.isDown){
+            gdata.wishedDirection = 'Down'
         }
-        // else if (this.cursors.right.isDown)
-        // {
-        //     data.currentDirection = 'Left'
-        // }
-
-        // if (this.cursors.up.isDown)
-        // {
-        //     data.currentDirection = 'Left'
-        // }
-        // else if (this.cursors.down.isDown)
-        // {
-        //     data.currentDirection = 'Left'
-        // }
+        cam.scrollX -= gdata.changeX()
+        cam.scrollY -= gdata.changeY()
     }
 }
