@@ -8,13 +8,13 @@ class GameData{
         this.y                  = y
         this.currentDirection   = currentDirection
         this.wishedDirection    = wishedDirection
+        
         // this.FIRST_POINT_X = pacStyleLeft - 1233//corner of map
         // this.FIRST_POINT_Y = pacStyleTop - 1322.5 //corner of map
         // this.FIRST_GHOST_X = pacStyleLeft - 91*3
         // this.FIRST_GHOST_Y = pacStyleTop + 89.4
         // this.leftToEat = 'many'
-        this.grid               = {
-            array  : [
+        this.grid               = [ //h30w31
             [" " ," " ," " ," " ," " ," " ," " ,"G1","A" ,"A" ,"A" ,"A" ,"A" ,"G2","P1","G1","A" ,"A" ,"A" ,"A" ,"A" ,"G2"," " ," " ," " ," " ," " ," " ," " ],
             [" " ," " ," " ," " ," " ," " ," " ,"B" ,"G1","A" ,"A" ,"A" ,"A" ,"K" ,"O" ,"K" ,"A" ,"A" ,"A" ,"A" ,"G2","B" ," " ," " ," " ," " ," " ," " ," " ],
             [" " ," " ," " ," " ," " ," " ," " ,"B" ,"G4","A" ,"A" ,"P" ,"A" ,"G2","B" ,"G1","A" ,"P" ,"A" ,"A" ,"G3","B" ," " ," " ," " ," " ," " ," " ," " ],
@@ -47,11 +47,7 @@ class GameData{
             [" " ," " ," " ," " ," " ," " ," " ,"B" ,"G4","A" ,"A" ,"A" ,"A" ,"P" ,"O" ,"P" ,"A" ,"A" ,"A" ,"A" ,"G3","B" ," " ," " ," " ," " ," " ," " ," " ],
             [" " ," " ," " ," " ," " ," " ," " ,"G4","A" ,"A" ,"A" ,"A" ,"A" ,"G3","K1","G4","A" ,"A" ,"A" ,"A" ,"A" ,"G3"," " ," " ," " ," " ," " ," " ," " ],
             [" " ," " ," " ," " ," " ," " ," " ,"P" ,"P" ,"P" ,"P" ,"P" ,"P" ,"P" ,"B" ,"P" ,"P" ,"P" ,"P" ,"P" ,"P" ,"P" ," " ," " ," " ," " ," " ," " ," " ]
-            ],
-            
-            height : 30,
-            width  : 31,
-        }
+        ],
         this.points             = [
             [0,0,0,0,0,0,0,7,1,1,1,1,1,1,1,1,1,1,1,1,1,7,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],
@@ -84,7 +80,7 @@ class GameData{
             [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,7,1,1,1,1,1,1,1,1,1,1,1,1,1,7,0,0,0,0,0,0,0]
-            ]
+        ]
         this.wayToPrison        = [
             [99,99,99,99,99,99,99,36,37,38,39,40,41,42,43,42,41,40,39,38,37,36,99,99,99,99,99,99,99],
             [99,99,99,99,99,99,99,33,47,47,46,45,44,43,42,43,44,45,46,47,47,33,99,99,99,99,99,99,99],
@@ -117,10 +113,61 @@ class GameData{
             [99,99,99,99,99,99,99,32,46,45,44,43,44,43,41,43,44,43,44,45,46,32,99,99,99,99,99,99,99],
             [99,99,99,99,99,99,99,33,47,47,46,45,44,43,42,43,44,45,46,47,47,33,99,99,99,99,99,99,99],
             [99,99,99,99,99,99,99,36,37,38,39,40,41,42,43,42,41,40,39,38,37,36,99,99,99,99,99,99,99]
-           ]
+        ]
     }
     changeDirection(){
-        var i
+        if (this.movedX == 0 && this.movedY == 0){
+            if ((this.wishedDirection == 'Right') && (this.grid[this.y][this.x] != "R") && (this.grid[this.y][this.x] != "G2") && (this.grid[this.y][this.x] != "G3") && (this.grid[this.y][this.x] != "B")){
+                this.currentDirection = this.wishedDirection
+            }else if ((this.wishedDirection == "Left") && (this.grid[this.y][this.x] != "L") && (this.grid[this.y][this.x] != "G1") && (this.grid[this.y][this.x] != "G4") && (this.grid[this.y][this.x] != "B")){
+                this.currentDirection = this.wishedDirection
+            }else if ((this.wishedDirection == "Down") && (this.grid[this.y][this.x] != "A") && (this.grid[this.y][this.x] != "G3") && (this.grid[this.y][this.x] != "G4") && (this.grid[this.y][this.x] != "K")){
+                this.currentDirection = this.wishedDirection
+            }else if ((this.wishedDirection == "Up") && (this.grid[this.y][this.x] != "A") && (this.grid[this.y][this.x] != "G1") && (this.grid[this.y][this.x] != "G2") && (this.grid[this.y][this.x] != "P")){
+                this.currentDirection = this.wishedDirection
+            }
+        }
+    }
+    canMove(){
+        if (
+        ((this.currentDirection == "Right") && (this.grid[this.y][this.x] != "R") && (this.grid[this.y][this.x] != "G2") && (this.grid[this.y][this.x] != "G3") && (this.grid[this.y][this.x] != "B"))
+        ||
+        ((this.currentDirection == "Left") && (this.grid[this.y][this.x] != "L") && (this.grid[this.y][this.x] != "G1") && (this.grid[this.y][this.x] != "G4") && (this.grid[this.y][this.x] != "B"))
+        ||
+        ((this.currentDirection == "Down") && (this.grid[this.y][this.x] != "A") && (this.grid[this.y][this.x] != "G3") && (this.grid[this.y][this.x] != "G4") && (this.grid[this.y][this.x] != "K"))
+        ||
+        ((this.currentDirection == "Up") && (this.grid[this.y][this.x] != "A") && (this.grid[this.y][this.x] != "G1") && (this.grid[this.y][this.x] != "G2") && (this.grid[this.y][this.x] != "P"))
+        ){
+            return true
+        }
+    }
+    changeX(){
+        let value = 0
+        if (this.movedX >= this.len){
+            value = this.movedX - this.len//from cam remove this value
+            this.x += 1
+            this.movedX = 0
+        }else if (this.movedX <= -this.len){
+            value = this.movedX + this.len
+            this.x -= 1
+            this.movedX = 0
+        }
+        this.changeDirection()
+        return value
+    }
+    changeY(){
+        let value = 0
+        if (this.movedY == this.len){
+            value = this.movedY - this.len
+            this.y += 1
+            this.movedY = 0
+        }else if (this.movedY == -this.len){
+            value = this.movedY + this.len
+            this.y -= 1
+            this.movedY = 0
+        }
+        this.changeDirection()
+        return value
     }
 
 }
