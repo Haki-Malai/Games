@@ -1,3 +1,4 @@
+# CURRENTLY UNAVAILABLE :(
 # PacMan
 I made a PacMan game for a school project using only javascript, css and html without any adittional libraries used only plain js. 
 There are some bugs left i don't think i will ever finish it but it's playable for now, open index file using Firefox.
