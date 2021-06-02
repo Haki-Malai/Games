@@ -1,0 +1,41 @@
+body{
+    background-color: #08243d;
+    font-family: Orbitron;
+}
+
+.noselect{
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* font */
+@font-face {
+    font-family: Orbitron;
+    src: url(../../assets/fonts/Orbitron/static/Orbitron-Medium.ttf);
+}
