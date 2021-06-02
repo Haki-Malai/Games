@@ -36,7 +36,7 @@ body{
 
 #maze{
     opacity: 0%;
-    background-image: url("Pac-Man Images/Game.png");
+    background-image: url("Pac-Man Images/grid.png");
     background-repeat: no-repeat;
     background-size: contain;
     width: 2654.4px;

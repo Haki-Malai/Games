@@ -1,3 +1,10 @@
+// O))        O))    O))))     O)))))))      O)) O)  O))) O))))))           O))        O))))     O)))))    O))))))))       O))))))))O))         O))O))))))))O)))))))    
+// O))        O))  O))    O))  O))    O))  O))    O))     O))            O))   O))   O))    O))  O))   O)) O))             O))       O))       O)) O))      O))    O))  
+// O))   O)   O))O))        O))O))    O))   O))           O))           O))        O))        O))O))    O))O))             O))        O))     O))  O))      O))    O))  
+// O))  O))   O))O))        O))O) O))         O))         O))           O))        O))        O))O))    O))O))))))         O))))))     O))   O))   O))))))  O) O))      
+// O)) O) O)) O))O))        O))O))  O))          O))      O))           O))        O))        O))O))    O))O))             O))          O)) O))    O))      O))  O))    
+// O) O)    O))))  O))     O)) O))    O))  O))    O))     O))            O))   O))   O))     O)) O))   O)) O))             O))           O))))     O))      O))    O))  
+// O))        O))    O))))     O))      O))  O)) O)       O))              O))))       O))))     O)))))    O))))))))       O))))))))      O))      O))))))))O))      O))
 function TogleAnimationStart(){
     Start.style.animation = "WhenHover 0.4s infinite, Lighting 0s 0s infinite, MenuMove 0s 0s infinite"
 }
