@@ -10,7 +10,7 @@
  <p/>
 <br>
 
-# SUDOKU ([HYPER](https://sudoku-hyper.netlify.app/) AND [X](https://sudokux.netlify.app/))
+# SUDOKU ([HYPER](https://hyper-sudoku.netlify.app/) AND [X](https://sudokux.netlify.app/))
 <p align="center">
 <img src="https://i.postimg.cc/5jWnVYH8/Screenshot-1.png" width=700>
  <p/>
